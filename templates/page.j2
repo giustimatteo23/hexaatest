@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+{% if allgood==True %}
+<title>OK</title>
+{% else %}
+<title>ERROR</title>
+{% endif %}
+</head>
+<body>
+{% if allgood==False %}
+    {% for msg in errlist %}
+        <p> {{msg}} </p>
+    {% endfor %}
+{% else %}
+<p>Every test completed successfully</p>
+{% endif %}
+
+
+
+
+
+
+</body>
+</html>

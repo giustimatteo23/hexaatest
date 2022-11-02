@@ -1,0 +1,17 @@
+{
+  "HEXAAURL": "https://hexaa.matteo.einfra.hu",
+  "IDPSRCKEYS": "idp.niif.hu",
+  "TESTUSER": "matteo",
+  "TESTPASS": "testpass",
+  "URLSTOVISIT": [
+    "https://hexaa.matteo.einfra.hu/Shibboleth.sso/Metadata",
+    "https://hexaa.matteo.einfra.hu/Shibboleth.sso/Session",
+    "https://hexaa.matteo.einfra.hu/hexaa-backend"
+  ],
+  "TOLERATEDERRORS": [
+    "https://idp.niif.hu/favicon.ico - Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "NOVISITURLS":[
+    "https://hexaa.matteo.einfra.hu/logout"
+  ]
+}
