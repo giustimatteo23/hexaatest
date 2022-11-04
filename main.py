@@ -28,7 +28,7 @@ options.add_experimental_option("excludeSwitches", ["enable-logging"]) #used to 
 #options.add_argument("--log-level=1")
 
 
-with open("vars.json") as json_file:
+with open(os.environ.get("CFGLOC","/opt/cfg.json")) as json_file:
  vars = json.load(json_file)
 
 browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
@@ -111,7 +111,7 @@ def main():
     data["allgood"]=allgood
 
     
-    sleep(1)
+    sleep(60)
     browser.quit()
     
 
