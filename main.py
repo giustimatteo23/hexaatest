@@ -22,8 +22,10 @@ root.setLevel(os.environ.get("LOGLEVEL", "INFO"))
 
 #make a chrome browser
 options = webdriver.ChromeOptions()
-options.headless = False
+options.headless = True
 options.add_experimental_option("excludeSwitches", ["enable-logging"]) #used to surpress a bluetooth error -> Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+options.add_argument('--disable-dev-shm-usage')
+#options.add_argument('--disable-blink-features=AutomationControlled') ## to avoid getting detected
 #options.add_argument("--silent")
 #options.add_argument("--log-level=1")
 

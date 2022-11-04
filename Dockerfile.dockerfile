@@ -26,19 +26,16 @@ RUN make -j 4
 RUN make altinstall
 RUN python3.10 --version
 RUN apt-get -y install python3-pip
-RUN pip install selenium webdriver_manager
-RUN pip install virtualenv
-RUN virtualenv selenv
 
-RUN apt-get install python3-venv -y
-ENV VIRTUAL_ENV=/root/Python-3.10.5/selenv
-RUN python3 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+#RUN apt-get install python3-venv -y
+#ENV VIRTUAL_ENV=/root/Python-3.10.5/selenv
+#RUN python3 -m venv $VIRTUAL_ENV
+#ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-WORKDIR selenv/
+ARG now
 RUN git clone https://github.com/giustimatteo23/hexaatest.git
 WORKDIR hexaatest/
 RUN rm Dockerfile*
-RUN pip3 install -r dependencies.txt
+RUN pip install -r requirements.txt
 
-CMD ["python3.10", "main.py"]
+CMD ["python3.9", "main.py"]
