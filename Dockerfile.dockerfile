@@ -38,8 +38,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 WORKDIR selenv/
 RUN git clone https://github.com/giustimatteo23/hexaatest.git
 WORKDIR hexaatest/
-RUN rm Dockerfile
+RUN rm Dockerfile*
 RUN pip install -r dependencies.txt
 
-
-#TODO install the program from git
+CMD ["python3.10", "main.py"]

@@ -2,4 +2,3 @@ Jinja2
 selenium
 webdriver_manager
 packaging
-json
