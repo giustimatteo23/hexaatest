@@ -39,6 +39,6 @@ WORKDIR selenv/
 RUN git clone https://github.com/giustimatteo23/hexaatest.git
 WORKDIR hexaatest/
 RUN rm Dockerfile*
-RUN pip install -r dependencies.txt
+RUN pip3 install -r dependencies.txt
 
 CMD ["python3.10", "main.py"]
