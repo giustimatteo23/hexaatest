@@ -22,18 +22,21 @@ root.setLevel(os.environ.get("LOGLEVEL", "INFO"))
 
 #make a chrome browser
 options = webdriver.ChromeOptions()
+options.add_argument('--no-sandbox')
 options.headless = True
 options.add_experimental_option("excludeSwitches", ["enable-logging"]) #used to surpress a bluetooth error -> Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
 options.add_argument('--disable-dev-shm-usage')
+options.add_argument('--headless')
+options.add_argument('--remote-debugging-port=9222')
 #options.add_argument('--disable-blink-features=AutomationControlled') ## to avoid getting detected
 #options.add_argument("--silent")
 #options.add_argument("--log-level=1")
-
+browser = webdriver.Chrome(service=Service(executable_path=ChromeDriverManager().install()),options=options)
 
 with open(os.environ.get("CFGLOC","/opt/cfg.json")) as json_file:
  vars = json.load(json_file)
 
-browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
+
 LOGINURL=vars["HEXAAURL"]
 IDPSRCKEYS=vars["IDPSRCKEYS"]
 TESTUSER=vars["TESTUSER"]
