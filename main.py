@@ -95,6 +95,7 @@ def urltest(urllist, browser=browser, exceptionlist=urlexceptionlist):
 
 
 def geturlsonpage(browser=browser):
+    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
     welementlist=browser.find_elements(By.XPATH,"//a[@href]")
     return list(map(lambda x: x.get_attribute("href"),welementlist))
 
@@ -110,11 +111,11 @@ def myrender():
 def main():
     allgood = True
     allgood &= login()
-    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-    body = browser.find_element(By.TAG_NAME, 'body')
-    elements = body.find_elements(By.XPATH, './/*[not(self::div)]')
-    for elem in elements:
-        logging.info(elem.text)
+    # WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+    # body = browser.find_element(By.TAG_NAME, 'body')
+    # elements = body.find_elements(By.XPATH, './/*[not(self::div)]')
+    # for elem in elements:
+    #     logging.info(elem.text)
     allgood &= urltest(geturlsonpage())
     allgood &= urltest(urlstovisit)
 
