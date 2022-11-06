@@ -121,7 +121,6 @@ def main():
     allgood &= urltest(urlstovisit)
 
     data["allgood"]=allgood
-    sleep(100)
     myrender()
     sleep(1000)
     browser.quit()
