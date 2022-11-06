@@ -110,7 +110,7 @@ def myrender():
 def main():
     allgood = True
     allgood &= login()
-    body = browser.find_element(By.TAG_NAME, 'body')
+    body = browser.find_element(By.TAG_NAME, "body")
     elements = body.find_elements(By.XPATH, './/*[not(self::div)]')
     for debugelem in elements:
         logging.info(debugelem.text)
