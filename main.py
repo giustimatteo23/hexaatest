@@ -110,6 +110,7 @@ def myrender():
 def main():
     allgood = True
     allgood &= login()
+    print(browser.page_source)
     allgood &= urltest(geturlsonpage())
     allgood &= urltest(urlstovisit)
 
