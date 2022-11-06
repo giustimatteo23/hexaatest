@@ -110,7 +110,10 @@ def myrender():
 def main():
     allgood = True
     allgood &= login()
-    logging.info(browser.find_element(By.TAG_NAME, "head").text)
+    body = browser.find_element(By.TAG_NAME, 'body')
+    elements = body.find_elements(By.XPATH, './/*[not(self::div)]')
+    for debugelem in elements:
+        logging.info(debugelem.text)
     allgood &= urltest(geturlsonpage())
     allgood &= urltest(urlstovisit)
 
