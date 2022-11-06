@@ -102,7 +102,7 @@ def geturlsonpage(browser=browser):
 def myrender():
     #print(os.getcwd())
     pageloc = os.environ.get("PAGELOC","/var/www/index.html")
-    environment = Environment(loader=FileSystemLoader("/opt/templates/"))
+    environment = Environment(loader=FileSystemLoader("./templates/"))
     template = environment.get_template("page.j2")
     rendered= template.render(data)
     with open(pageloc, mode="w", encoding="utf-8") as message:
