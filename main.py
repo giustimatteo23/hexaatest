@@ -101,10 +101,11 @@ def geturlsonpage(browser=browser):
 
 def myrender():
     #print(os.getcwd())
+    pageloc = os.environ.get("PAGELOC","/var/www/index.html")
     environment = Environment(loader=FileSystemLoader("/opt/templates/"))
     template = environment.get_template("page.j2")
     rendered= template.render(data)
-    with open("readypage.html", mode="w", encoding="utf-8") as message:
+    with open(pageloc, mode="w", encoding="utf-8") as message:
         message.write(rendered)
 
 
@@ -120,7 +121,7 @@ def main():
     allgood &= urltest(urlstovisit)
 
     data["allgood"]=allgood
-
+    sleep(1000)
     browser.quit()
     
 
