@@ -110,10 +110,11 @@ def myrender():
 def main():
     allgood = True
     allgood &= login()
-    body = browser.find_element(By.TAG_NAME, "body")
+    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+    body = browser.find_element(By.TAG_NAME, 'body')
     elements = body.find_elements(By.XPATH, './/*[not(self::div)]')
-    for debugelem in elements:
-        logging.info(debugelem.text)
+    for elem in elements:
+        logging.info(elem.text)
     allgood &= urltest(geturlsonpage())
     allgood &= urltest(urlstovisit)
 
