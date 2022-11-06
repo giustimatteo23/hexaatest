@@ -110,14 +110,12 @@ def myrender():
 def main():
     allgood = True
     allgood &= login()
-    logging.info(browser.page_source)
+    logging.info(browser.find_element(By.TAG_NAME("body")).get_attribute("Text"))
     allgood &= urltest(geturlsonpage())
     allgood &= urltest(urlstovisit)
 
     data["allgood"]=allgood
 
-    
-    sleep(60)
     browser.quit()
     
 
