@@ -32,7 +32,7 @@ RUN git clone https://github.com/giustimatteo23/hexaatest.git
 WORKDIR hexaatest/
 RUN rm Dockerfile*
 RUN pip install -r requirements.txt
-
+RUN apt install -y apache2
 #CMD ["python3.9", "main.py"]
 COPY ./start.sh /start.sh
 CMD ["/bin/bash", "/start.sh"]
