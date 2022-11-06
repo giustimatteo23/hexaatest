@@ -110,7 +110,7 @@ def myrender():
 def main():
     allgood = True
     allgood &= login()
-    logging.info(browser.find_element(By.TAG_NAME("body")).get_attribute("Text"))
+    logging.info(browser.find_element(By.TAG_NAME("body")).text)
     allgood &= urltest(geturlsonpage())
     allgood &= urltest(urlstovisit)
 
