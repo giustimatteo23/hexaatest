@@ -88,7 +88,7 @@ def runscripts(dir):
     for script in scriptslist:
         logging.info("Running "+script)
         cmd = [dir+"/"+script]
-        result = subprocess.run(cmd,executable='/bin/bash',stdout=subprocess.PIPE)
+        result = subprocess.run(cmd,executable='/bin/bash',stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         logging.info(result.stdout.decode('utf-8'))
         logging.info(result.stderr.decode('utf-8'))
         if result.stdout.decode('utf-8') != "0":
