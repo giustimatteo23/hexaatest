@@ -4,6 +4,7 @@
 # make an exe: pyinstaller.exe --onefile -w "main.py" 
 # delete the created folders after
 
+import subprocess
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -75,6 +76,20 @@ def login(loginurl=LOGINURL, idpsrckeys=IDPSRCKEYS, USER=TESTUSER, PASS=TESTPASS
         data["errlist"].append("Login failed!")
         return False
 
+def runscripts(dir):
+    allgood=True
+    scriptslist = map(lambda name: name if("sh" in name) and os.path.isfile(dir+"/"+name) else "",os.listdir(dir))
+    logging.info("Loaded scripts with sh ending are: ")
+    logging.info(scriptslist)
+    for script in scriptslist:
+        logging.info("Running "+script)
+        cmd = [dir+"/"+script]
+        result = subprocess.run(cmd,executable='/bin/bash',stdout=subprocess.PIPE)
+        logging.info(result.stdout.decode('utf-8'))
+        if result.stdout.decode('utf-8') != "0":
+            logging.error("This script didnt exit with status code 0: "+script)
+            allgood=False
+    return allgood
 
 def urltest(urllist, browser=browser, exceptionlist=urlexceptionlist):
     allgood=True
@@ -112,17 +127,14 @@ def myrender():
 def main():
     allgood = True
     allgood &= login()
-    # WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-    # body = browser.find_element(By.TAG_NAME, 'body')
-    # elements = body.find_elements(By.XPATH, './/*[not(self::div)]')
-    # for elem in elements:
-    #     logging.info(elem.text)
+    allgood &= runscripts()
     allgood &= urltest(geturlsonpage())
     allgood &= urltest(urlstovisit)
 
     data["allgood"]=allgood
     myrender()
     sleep(1000)
+
     browser.quit()
     
 
