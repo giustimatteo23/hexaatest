@@ -34,10 +34,10 @@ options.add_argument('--remote-debugging-port=9222')
 options.add_argument('--disable-blink-features=AutomationControlled') ## to avoid getting detected
 #options.add_argument("--silent")
 #options.add_argument("--log-level=1")
-#browser = webdriver.Chrome(service=Service(executable_path=ChromeDriverManager().install()),options=options)
-browser = webdriver.Chrome(service=Service(executable_path="/usr/local/bin/chromedriver"),options=options)
+browser = webdriver.Chrome(service=Service(executable_path=ChromeDriverManager().install()),options=options)
+#browser = webdriver.Chrome(service=Service(executable_path="/usr/local/bin/chromedriver"),options=options)
 
-with open(os.environ.get("CFGLOC","/opt/cfg.json")) as json_file:
+with open(os.environ.get("CFGLOC","/hexaahealthcheck/cfg.json")) as json_file:
  vars = json.load(json_file)
 
 
