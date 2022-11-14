@@ -27,7 +27,9 @@ options.add_argument('--no-sandbox')
 options.headless = True
 options.add_experimental_option("excludeSwitches", ["enable-logging"]) #used to surpress a bluetooth error -> Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
 options.add_argument('--disable-dev-shm-usage')
-#options.add_argument('--headless')
+options.add_argument('--headless')
+options.add_argument("--disable-gpu")
+options.add_argument("--screen-size=1200x800")
 options.add_argument('--remote-debugging-port=9222')
 #options.add_argument('--disable-blink-features=AutomationControlled') ## to avoid getting detected
 #options.add_argument("--silent")
