@@ -89,10 +89,15 @@ def runscripts(dir):
         logging.info("Running ")
         cmd = [dir+"/"+script]
         logging.info(cmd)
-        result = subprocess.run(cmd,executable='/bin/bash',stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        logging.info(result.stdout.decode('utf-8'))
-        logging.info(result.stderr.decode('utf-8'))
-        if result.stdout.decode('utf-8') != "0":
+        #result = subprocess.run(cmd,executable='/bin/bash',stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        PIPE = subprocess.PIPE
+        proc = subprocess.Popen(cmd, stdout=PIPE, stderr=PIPE)
+        output, err = proc.communicate()
+        errcode = proc.returncode
+        
+        logging.info(output.decode('utf-8'))
+        logging.info(err.decode('utf-8'))
+        if output.decode('utf-8') != "0":
             logging.error("This script didnt exit with status code 0: "+script)
             allgood=False
     return allgood
