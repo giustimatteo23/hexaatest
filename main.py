@@ -86,8 +86,9 @@ def runscripts(dir):
     logging.info("Loaded scripts with sh ending are: ")
     logging.info(scriptslist)
     for script in scriptslist:
-        logging.info("Running "+script)
+        logging.info("Running ")
         cmd = [dir+"/"+script]
+        logging.info(cmd)
         result = subprocess.run(cmd,executable='/bin/bash',stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         logging.info(result.stdout.decode('utf-8'))
         logging.info(result.stderr.decode('utf-8'))
