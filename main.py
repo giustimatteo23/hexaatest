@@ -90,6 +90,7 @@ def runscripts(dir):
         cmd = [dir+"/"+script]
         result = subprocess.run(cmd,executable='/bin/bash',stdout=subprocess.PIPE)
         logging.info(result.stdout.decode('utf-8'))
+        logging.info(result.stderr.decode('utf-8'))
         if result.stdout.decode('utf-8') != "0":
             logging.error("This script didnt exit with status code 0: "+script)
             allgood=False
