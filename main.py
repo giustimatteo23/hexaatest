@@ -127,7 +127,7 @@ def myrender():
 def main():
     allgood = True
     allgood &= login()
-    allgood &= runscripts()
+    allgood &= runscripts(vars["SCRIPTSDIR"])
     allgood &= urltest(geturlsonpage())
     allgood &= urltest(urlstovisit)
 
