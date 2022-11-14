@@ -81,7 +81,7 @@ def login(loginurl=LOGINURL, idpsrckeys=IDPSRCKEYS, USER=TESTUSER, PASS=TESTPASS
 
 def runscripts(dir):
     allgood=True
-    scriptslist = list(map(lambda name: name if(name.endswith(".sh")) and os.path.isfile(dir+"/"+name) else "",os.listdir(dir))).remove("")
+    scriptslist = list(map(lambda name: name if(name.endswith(".sh")) and os.path.isfile(dir+"/"+name) else None,os.listdir(dir)))
     logging.info("Loaded scripts with sh ending are: ")
     logging.info(scriptslist)
     for script in scriptslist:
