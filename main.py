@@ -31,10 +31,11 @@ options.add_argument('--headless')
 options.add_argument("--disable-gpu")
 options.add_argument("--screen-size=1200x800")
 options.add_argument('--remote-debugging-port=9222')
-#options.add_argument('--disable-blink-features=AutomationControlled') ## to avoid getting detected
+options.add_argument('--disable-blink-features=AutomationControlled') ## to avoid getting detected
 #options.add_argument("--silent")
 #options.add_argument("--log-level=1")
-browser = webdriver.Chrome(service=Service(executable_path=ChromeDriverManager().install()),options=options)
+#browser = webdriver.Chrome(service=Service(executable_path=ChromeDriverManager().install()),options=options)
+browser = webdriver.Chrome(service=Service(executable_path="/usr/local/bin/chromedriver"),options=options)
 
 with open(os.environ.get("CFGLOC","/opt/cfg.json")) as json_file:
  vars = json.load(json_file)
